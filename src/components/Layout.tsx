@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 type Props = {
   children: React.ReactNode;
-}
+};
 
 const Layout = (props: Props) => {
   return (
