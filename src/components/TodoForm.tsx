@@ -34,6 +34,15 @@ const Container = styled.div`
   padding-top: 20px;
 `;
 
+const Form = styled.svg`
+  width: 600px;
+  height: 58px;
+  flex-shrink: 0;
+  fill: var(--FFFFFF, #FFF);
+  stroke-width: 1px;
+  stroke: #EEE;
+`;
+
 const Input = styled.input`
   width: 600px;
   height: 58px;

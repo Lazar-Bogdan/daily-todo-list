@@ -11,34 +11,39 @@ type Todo = {
 
 type ToDoListProps = {
   todos: Todo[];
+  onClick: (id: number) => void;
 }
 
-const TodoList: React.FC<ToDoListProps> = ({ todos }) => {
-  const [clicked, setClicked] = useState<number>(null);
+const TodoList = (props: ToDoListProps) => {
 
   const handleListClicked = (id: number) => {
-    setClicked(id);
+    props.onClick(id);
   }
-  
+
+  const sortMap = props.todos.slice().sort((a,b) => {
+    if(a.complete !== b.complete) return a.complete ? -1 : 1;
+
+    return new Date(a.createdAt) - new Date(b.createdAt);
+  })
+
   return (
     <Container>
-      {todos.map(todo => (
-        <Row 
+      {sortMap.map(todo => (
+        <Row
           key={todo.id}
           onClick={() => handleListClicked(todo.id)}
         >
           <Elipse>
-            <circle 
-              cx="16" 
-              cy="16" 
-              r="15.5" 
-              stroke={clicked === todo.id ? '#00D8A7' : '#2D70FD'}
-              fill={clicked === todo.id ? '#00D8A7' : 'none'}
+            <circle
+              cx="16"
+              cy="16"
+              r="15.5"
+              stroke={todo.complete ? '#00D8A7' : '#2D70FD'}
+              fill={todo.complete ? '#00D8A7' : 'none'}
             />
             {/* {clicked === todo.id ? ''} */}
           </Elipse>
           <Text
-            text-decoration-line={clicked === todo.id ? 'strikethrough' : 'none'}
           >
             {todo.name}
           </Text>
@@ -80,6 +85,7 @@ const Text = styled.span`
   line-height: 110%; /* 17.6px */
   letter-spacing: 0.16px;
   transition: color 0.3s ease;
+
 
   &:hover {
     color: #2D70FD;

@@ -17,7 +17,7 @@ type Todo = {
 
 export default function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
-  console.log('todos', todos);
+  // console.log('todos', todos);
 
   const createTodo = (name: string) => {
     const newTodo = {
@@ -39,12 +39,29 @@ export default function App() {
     setTodos(newTodos);
   }
 
+  const handleClearAll = () => {
+    setTodos([]);
+  }
+
+  const handleComplete = (id: number) => {
+    console.log(id);
+    console.log('todos', todos);
+
+    const index = todos.findIndex(todo => todo.id === id);
+    if (index === -1) return;
+
+    const UpdatedTodos = todos.map(todo =>
+        todo.id === id ? { ...todo, complete: true } : todo);
+    console.log(UpdatedTodos);
+    setTodos(UpdatedTodos);
+  }
+
   return (
     <Layout>
       <Title>Daily To Do List</Title>
       <TodoForm onSubmit={createTodo} />
-      <TodoList todos={todos} />
-      <Footer />
+      <TodoList todos={todos} onClick={handleComplete} />
+      <Footer todos={todos} onClearAll={handleClearAll} />
     </Layout>
   )
 }

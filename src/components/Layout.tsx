@@ -45,4 +45,5 @@ const Card = styled.div`
 
 const Content = styled.div`
   padding: 42px 0px;
+  position:relative;
 `;

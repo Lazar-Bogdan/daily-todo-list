@@ -2,13 +2,29 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
-const Footer = () => {
+type Todo = {
+  id: number;
+  name: string;
+  complete: boolean;
+  createdAt: Date;
+}
+
+type ToDoFooter = {
+  todos: Todo[];
+  onClearAll: () => void;
+}
+
+const Footer= (props: ToDoFooter) => {
+
+  
   return (
     <Container>
       <Line />
       <Info>
-        <TaskCompleted>1 task completed</TaskCompleted>
-        <ClearAll>Clear All</ClearAll>
+        <TaskCompleted>
+          {props.todos.reduce((count, todo) => todo.complete ? count + 1 : count, 0)} Tasks Completed
+        </TaskCompleted>
+        <ClearAll onClick={props.onClearAll} >Clear All</ClearAll>
       </Info>
     </Container>
   )
@@ -18,8 +34,10 @@ export default Footer;
 
 const Container = styled.div`
   width: 600px;
+  bottom:0;
   height: 42px;
   flex-shrink: 0;
+  margin-top: 250px
 `;
 
 const Line = styled.div`
@@ -32,7 +50,7 @@ const Info = styled.div`
   display:flex;
   flex-direction: row;
   padding-top: 10px;
-  gap: 400px;
+  gap: 385px;
 `;
 
 const TaskCompleted = styled.span`
