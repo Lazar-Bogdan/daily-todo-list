@@ -25,6 +25,14 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  @media (max-width: 800px) {
+    widht:400px;
+    height: 742px;
+    flex-shirk:0;
+    display:flex;
+    background: #FFF;
+  }
 `;
 
 const Card = styled.div`
@@ -41,6 +49,15 @@ const Card = styled.div`
   flex-direction: column;
   justify-items: flex-start;
   align-items: center;
+  position:absolute;
+
+  
+  @media (max-width: 800px) {
+    border-radius: 32px;
+    background: #FFF;
+
+    box-shadow: 0px 0px 4px 0px rgba(0, 23, 71, 0.15);
+  }
 `;
 
 const Content = styled.div`

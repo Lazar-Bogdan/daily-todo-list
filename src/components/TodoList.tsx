@@ -20,8 +20,8 @@ const TodoList = (props: ToDoListProps) => {
     props.onClick(id);
   }
 
-  const sortMap = props.todos.slice().sort((a,b) => {
-    if(a.complete !== b.complete) return a.complete ? -1 : 1;
+  const sortMap = props.todos.slice().sort((a, b) => {
+    if (a.complete !== b.complete) return a.complete ? -1 : 1;
 
     return new Date(a.createdAt) - new Date(b.createdAt);
   })
@@ -41,9 +41,21 @@ const TodoList = (props: ToDoListProps) => {
               stroke={todo.complete ? '#00D8A7' : '#2D70FD'}
               fill={todo.complete ? '#00D8A7' : 'none'}
             />
-            {/* {clicked === todo.id ? ''} */}
+            {todo.complete === true && (
+              <path d="M10 14L15 20L25 9"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="16"
+                height="16"
+                left="100px"
+                viewBox="0 0 16 16"
+                fill="none" />
+            )}
           </Elipse>
           <Text
+            complete={todo.complete}
           >
             {todo.name}
           </Text>
@@ -75,8 +87,8 @@ const Row = styled.div`
   gap: 15px;
 `;
 
-const Text = styled.span`
-  color: #001747;
+const Text = styled.span<{ complete: boolean }>`
+  color: ${(props) => (props.complete ? '#8F98A8' : '#001747')};
   font-feature-settings: 'liga' off;
   font-family: Inter;
   font-size: 16px;
@@ -85,10 +97,10 @@ const Text = styled.span`
   line-height: 110%; /* 17.6px */
   letter-spacing: 0.16px;
   transition: color 0.3s ease;
-
+  text-decoration-line: ${(props) => (props.complete ? 'line-through' : 'none')};
 
   &:hover {
-    color: #2D70FD;
+    color: ${(props) => (props.complete ? '#8F98A8' : '#001747')};
     font-feature-settings: 'liga' off;
     font-family: Inter;
     font-size: 16px;
