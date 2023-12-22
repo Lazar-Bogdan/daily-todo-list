@@ -15,11 +15,11 @@ const TodoForm = (props: Props) => {
 
   return (
     <Container>
-      <svg xmlns="http://www.w3.org/2000/svg" width="600" height="58" viewBox="0 0 600 58" fill="none">
-        <path d="M0.5 8C0.5 3.85787 3.85786 0.5 8 0.5H592C596.142 0.5 599.5 3.85787 599.5 8V50C599.5 54.1421 596.142 57.5 592 57.5H7.99999C3.85786 57.5 0.5 54.1421 0.5 50V8Z" fill="white" stroke="#EEEEEE" />
-      </svg>
-      <Input placeholder="Add new Item" value={name} onChange={e => setName(e.target.value)} />
-      <Button onClick={submitForm}>Add</Button>
+      <Form>
+        <Input placeholder="Add new Item" value={name} onChange={e => setName(e.target.value)}>
+        </Input>
+        <Button onClick={submitForm}>Add</Button>
+      </Form>
     </Container>
   )
 }
@@ -29,28 +29,35 @@ export default TodoForm;
 const Container = styled.div`
   width: 600px;
   height: 58px;
-  flex-shrink: 0;
   display: flex;
-  padding-top: 20px;
+  border: 1px solid var(--stroke, #EEE);
+  border-radius: 4px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 32px;
+
+  @media (max-width: 800px) {
+    width: 360px;
+    height: 58px;
+    margin-left:10px;
+  }
 `;
 
-const Form = styled.svg`
-  width: 600px;
-  height: 58px;
-  flex-shrink: 0;
-  fill: var(--FFFFFF, #FFF);
-  stroke-width: 1px;
-  stroke: #EEE;
+const Form = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 const Input = styled.input`
-  width: 600px;
+  width: 500px;
   height: 58px;
   flex-shrink: 0;
   fill: var(--FFFFFF, #FFF);
   stroke-width: 1px;
   stroke: #EEE;
-  color: #B1BACB;
+  border: none;
+  outline: none;
+  
   font-feature-settings: 'liga' off;
   font-family: Inter;
   font-size: 16px;
@@ -58,16 +65,29 @@ const Input = styled.input`
   font-weight: 400;
   line-height: 110%; /* 17.6px */
   letter-spacing: 0.16px;
+
+  @media (max-width: 800px) {
+    width: 280px;
+    height: 58px;
+    flex-shrink: 0;
+    fill: var(--FFFFFF, #FFF);
+    stroke-width: 1px;
+    stroke: #EEE;
+  }
 `;
 
 const Button = styled.button`
+  display: flex;
+  width: 84px;
+  heigth: 44px;
   display: inline-flex;
-  padding: 12px 24px;
+  padding: 15px 24px;
   align-items: flex-start;
   gap: 8px;
   border-radius: 4px;
   border: 1px solid var(--Mavi, #2D70FD);
   background: #2D70FD;
+
   color: #FFF;
   text-align: center;
   font-feature-settings: 'liga' off;
@@ -77,4 +97,15 @@ const Button = styled.button`
   font-weight: 500;
   line-height: 110%; /* 19.8px */
   letter-spacing: 0.18px;
+
+  @media (max-width: 800px) {
+    display: flex;
+    width: 84px;
+    padding: 12px 24px;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--Mavi, #2D70FD);
+    background: #2D70FD;
+  }
 `;

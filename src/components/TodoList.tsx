@@ -73,6 +73,10 @@ const Container = styled.div`
   flex-shrink: 0;
   margin-top: 26px;
   gap: 24px;
+
+  @media (max-width: 800px) {
+    padding-left:15px;
+  }
 `;
 
 const Row = styled.div`
@@ -88,6 +92,7 @@ const Row = styled.div`
 `;
 
 const Text = styled.span<{ complete: boolean }>`
+  white-space: nowrap;
   color: ${(props) => (props.complete ? '#8F98A8' : '#001747')};
   font-feature-settings: 'liga' off;
   font-family: Inter;
@@ -100,7 +105,7 @@ const Text = styled.span<{ complete: boolean }>`
   text-decoration-line: ${(props) => (props.complete ? 'line-through' : 'none')};
 
   &:hover {
-    color: ${(props) => (props.complete ? '#8F98A8' : '#001747')};
+    color: ${(props) => (props.complete ? '#8F98A8' : '#2D70FD')};
     font-feature-settings: 'liga' off;
     font-family: Inter;
     font-size: 16px;

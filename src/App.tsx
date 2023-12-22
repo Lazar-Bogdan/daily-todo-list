@@ -74,4 +74,10 @@ const Title = styled.span`
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.48px;
+
+  @media (max-width: 500px) {
+    padding-left:100px;
+    color:#11175E;
+    display: inline-block;
+  }
 `;

@@ -14,9 +14,9 @@ type ToDoFooter = {
   onClearAll: () => void;
 }
 
-const Footer= (props: ToDoFooter) => {
+const Footer = (props: ToDoFooter) => {
 
-  
+
   return (
     <Container>
       <Line />
@@ -34,23 +34,42 @@ export default Footer;
 
 const Container = styled.div`
   width: 600px;
-  bottom:0;
+  position: fixed;
+  bottom: 60px;
   height: 42px;
   flex-shrink: 0;
-  margin-top: 250px
+
+  @media (max-width: 800px) {
+    width: 360px;
+    height: 39px;
+    flex-shrink: 0;
+    bottom: 20px;
+    display: center;
+    padding-left: 15px;
+  }
 `;
 
 const Line = styled.div`
   width: 600px;
   height: 1px;
   background: #EEE;
+
+  @media (max-width: 800px) {
+    width: 360px;
+    height: 1px;
+  }
 `;
 
 const Info = styled.div`
   display:flex;
+  padding-top:10px;
   flex-direction: row;
-  padding-top: 10px;
   gap: 385px;
+  white-space: nowrap;
+  
+  @media (max-width: 800px) {
+    gap: 150px;
+  }
 `;
 
 const TaskCompleted = styled.span`
@@ -74,4 +93,5 @@ const ClearAll = styled.span`
   font-weight: 500;
   line-height: 110%; /* 17.6px */
   letter-spacing: 0.16px;
+  cursor: pointer;
 `;

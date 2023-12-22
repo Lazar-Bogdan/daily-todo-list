@@ -36,10 +36,8 @@ const Background = styled.div`
 `;
 
 const Card = styled.div`
-  width: 100%;
-  height: 100%;
-  max-width: 1000px;
-  max-height: 670px;
+  width: 1000px;
+  height: 670px;
   flex-shrink: 0;
   border-radius: 32px;
   background: #FFF;
@@ -53,14 +51,31 @@ const Card = styled.div`
 
   
   @media (max-width: 800px) {
+    width: 400px;
+    height: 742px;
+    flex-shrink: 0;
     border-radius: 32px;
     background: #FFF;
-
+    justifiy-content: center;
     box-shadow: 0px 0px 4px 0px rgba(0, 23, 71, 0.15);
+
+    display: flex;
+    max-height:100%;
+    margin: 0;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
 const Content = styled.div`
   padding: 42px 0px;
   position:relative;
+
+  @media (max-width: 800px) {
+    height: 100%;
+    width: 100%;
+  }
 `;
